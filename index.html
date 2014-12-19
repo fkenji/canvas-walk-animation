@@ -1,0 +1,53 @@
+<html>
+<head>
+  <title>Animation Test</title>
+  <script type="text/javascript">
+  (function() {
+    window.addEventListener('load', eventWindowLoaded, false);
+
+    function eventWindowLoaded() {
+      var dx = 0;
+      var dy = 0;
+      var theCanvas = document.getElementById("canvasOne")
+      context = theCanvas.getContext("2d")                
+
+      var terra = new Image();
+      terra.addEventListener('load', drawScreen, false)
+      terra.src = 'images/terra.png'          
+      var frameIndex = 0;
+      var animationFrames = 3
+      var fps = 100;
+
+      function drawScreen() {
+        setTimeout(drawScreen, fps);
+        context.fillStyle = "#aaaaaa"
+        context.fillRect(0, 0, 500, 300)
+
+        var canvasX = 200 + dx;
+        var canvasY = 0 + dy;
+
+        var sourceX = (frameIndex % animationFrames) * 30
+        var sourceY = 60;
+
+        var sourceWidth  = 30;
+        var sourceHeight = 30;
+
+        var drawnWidth  = 30;
+        var drawnHeight = 30;
+
+        context.drawImage(terra, sourceX, sourceY, sourceWidth, sourceHeight, canvasX, canvasY, drawnWidth, drawnHeight);
+      
+        frameIndex = frameIndex + 1;
+        dx = dx - 1;
+      }
+    }
+  })();
+
+  </script>
+</head>
+<body>
+  <canvas id="canvasOne" width="500" height="300">
+    Your browser does not support HTML5 Canvas.
+  </canvas>
+</body>
+</html>

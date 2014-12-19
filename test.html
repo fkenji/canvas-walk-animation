@@ -1,0 +1,33 @@
+<html>
+<head>
+  <title>Animation Test</title>
+</head>
+
+
+<script src="javascript/player.js"></script>
+<script src="javascript/game.js"></script>
+
+<style>
+  
+  canvas {
+    border: 1px solid red;
+  }
+
+</style>
+
+<body>
+  <canvas id="canvasOne" width="1000" height="550">
+    Your browser does not support HTML5 Canvas.
+  </canvas>
+  <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function(event) { 
+    var context = document.getElementById("canvasOne").getContext('2d');
+    var game  = new Game({
+      context: context
+    })
+
+    game.start();
+  });
+  </script>  
+</body>
+</html>
